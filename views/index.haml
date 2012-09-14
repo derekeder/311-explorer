@@ -1,3 +1,19 @@
 .row-fluid
-  .span12
-    %p Hello world!
+  .span8
+    %h1 Here are some 311 service requests
+
+    %p Showing counts since Sept 7, 2012
+
+    - content_for :javascripts do
+      = include_javascript "311-services"
+      :javascript
+        $(function () {
+          Open311Chicago.getServiceTypes("Open311Chicago.displayServiceTypes");
+        });
+
+    %table.table.table-bordered
+      %thead
+        %tr
+          %th Service type
+          %th Count
+      %tbody#service_types
